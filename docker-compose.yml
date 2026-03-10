@@ -1,0 +1,15 @@
+services:
+  source_db:
+    image: postgres:16
+    container_name: source_db
+    environment:
+      POSTGRES_DB: source_db
+      POSTGRES_USER: yana
+      POSTGRES_PASSWORD: 1147
+    ports:
+      - "5433:5432"
+    volumes:
+      - source_db_data:/var/lib/postgresql/data
+
+volumes:
+  source_db_data:
