@@ -11,5 +11,21 @@ services:
     volumes:
       - source_db_data:/var/lib/postgresql/data
 
+  clickhouse:
+    image: clickhouse/clickhouse-server:24.8
+    container_name: clickhouse
+    environment:
+      CLICKHOUSE_USER: yana
+      CLICKHOUSE_PASSWORD: 1147
+      CLICKHOUSE_DB: landing
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+      - clickhouse_logs:/var/log/clickhouse-server
+
 volumes:
   source_db_data:
+  clickhouse_data:
+  clickhouse_logs:
